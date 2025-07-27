@@ -36,3 +36,42 @@ export async function fetchCars(filters) {
   const res = await fetch(`http://localhost:8080/api/cars?${params.toString()}`);
   return await res.json();
 }
+export const fetchMyBookings = async () => {
+  const userId = localStorage.getItem("userId");
+
+  if (!userId) {
+    throw new Error("User not logged in");
+  }
+
+  const response = await fetch(`http://localhost:8080/api/bookings/user/${userId}`);
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch bookings");
+  }
+
+  return await response.json();
+};
+
+
+export async function fetchMyRentals(userId) {
+  const res = await fetch(`http://localhost:8080/api/rental/user/${userId}`);
+  if (!res.ok) {
+    throw new Error('Failed to fetch user rentals');
+  }
+  return await res.json();
+}
+export async function createRental(carData) {
+  const res = await fetch("http://localhost:8080/api/cars/add", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(carData),
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to list car");
+  }
+
+  return await res.json();
+}

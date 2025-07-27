@@ -46,11 +46,12 @@ public class CarController {
         return (car != null) ? ResponseEntity.ok(car) : ResponseEntity.notFound().build();
     }
 
-    @PostMapping("/all")
-    public Cars addCar(@RequestBody Cars car) {
-        return carService.saveCar(car);
-    }
-
+    @PostMapping("/add")
+    public ResponseEntity<Cars> addCar(@RequestBody Cars car) {
+        Cars savedCar = carService.saveCar(car);
+        return ResponseEntity.ok(savedCar);
+}
+    
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteCar(@PathVariable Long id) {
         carService.deleteCar(id);

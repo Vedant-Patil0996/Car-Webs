@@ -8,20 +8,24 @@ function LoginPage() {
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleLogin = async (e) => {
-    e.preventDefault();
-    const res = await fetch('http://localhost:8080/api/auth/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form),
-    });
-    const data = await res.json();
-    if (res.ok && data.success) {
-      alert('Login successful!');
-      navigate('/cars');
-    } else {
-      alert(data.message || 'Login failed.');
-    }
-  };
+  e.preventDefault();
+  const res = await fetch('http://localhost:8080/api/auth/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(form),
+  });
+  const data = await res.json();
+
+  if (res.ok && data.success) {
+    alert('Login successful!');
+    localStorage.setItem("userId", data.user.id); 
+    localStorage.setItem("userRole", data.user.role); 
+    navigate('/find-car');
+  } else {
+    alert(data.message || 'Login failed.');
+  }
+};
+
 
   return (
     <div>

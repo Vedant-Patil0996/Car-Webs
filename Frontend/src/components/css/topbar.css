@@ -1,0 +1,34 @@
+.topbar {
+  width: 100%;
+  height: 64px; /* or adjust as needed */
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0 24px;
+  background: #28a745; /* ✅ Green color */
+  color: white;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+.search-input {
+  padding: 8px;
+  font-size: 16px;
+  width: 60%;
+  border-radius: 4px;
+  border: none;
+  background-color: white;
+  color: black;
+}
+
+.btn {
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  background-color: white;
+  color: #28a745; /* Matches the green */
+  transition: background-color 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #f0f0f0;
+}

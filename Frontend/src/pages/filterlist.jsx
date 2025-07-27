@@ -9,8 +9,6 @@ function FilterForm({ onSearch }) {
     minPrice: "",
     maxPrice: ""
   });
-
-  // Sample data - replace with your actual data
   const brandOptions = [
     "Toyota", "Honda", "Ford", "BMW", "Mercedes", "Audi", "Volkswagen", 
     "Nissan", "Hyundai", "Kia", "Mazda", "Subaru", "Chevrolet"
@@ -23,7 +21,6 @@ function FilterForm({ onSearch }) {
     "BMW": ["3 Series", "5 Series", "X3", "X5", "M3", "M5"],
     "Mercedes": ["C-Class", "E-Class", "S-Class", "GLC", "GLE", "GLS"],
     "Audi": ["A3", "A4", "A6", "Q3", "Q5", "Q7"],
-    // Add more brands and models as needed
   };
 
   const fuelTypes = ["Petrol", "Diesel", "Electric", "Hybrid", "CNG", "LPG"];
@@ -33,7 +30,6 @@ function FilterForm({ onSearch }) {
     setFilters({ 
       ...filters, 
       [name]: value,
-      // Reset model if brand changes
       ...(name === 'brand' && { model: '' })
     });
   };
